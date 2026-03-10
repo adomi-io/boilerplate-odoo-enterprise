@@ -51,11 +51,11 @@ This repository will build your team a private Odoo Enterprise Docker image.
 - Once the GitHub action completes, you should have a package in your repository's Packages tab.
 - Copy the image URL from the Packages tab
 - Use the [odoo-boilerplate](https://github.com/adomi/odoo-boilerplate) template
-- Change the `ODOO_DOCKER_IMAGE` arg to the image URL you copied
+- Change the `ODOO_BASE_IMAGE` arg to the image URL you copied
 - Run `docker-compose up --build`
 
 > [!TIP]
-> If you use the `odoo-boilerplate`, and update the `ODOO_DOCKER_IMAGE`, then in the repository settings,
+> If you use the `odoo-boilerplate`, and update the `ODOO_BASE_IMAGE`, then in the repository settings,
 > mark it as a "Template repository," you will have an internal one-button way to create Odoo Enterprise repositories
 > for your team and clients.
 
@@ -76,7 +76,7 @@ This repository will build your team a private Odoo Enterprise Docker image.
 # Changing the base image
 > [!TIP]
 > Try our [odoo-community-base](https://github.com/adomi-io/odoo-community-base) base image
-> which includes some helpful OCA packages and additional addons. Set the `ODOO_DOCKER_IMAGE` arg to:
+> which includes some helpful OCA packages and additional addons. Set the `ODOO_BASE_IMAGE` arg to:
 > ```md
 > ghcr.io/adomi-io/odoo-community-base:latest
 > ```
