@@ -109,9 +109,9 @@ change the first line of the `Dockerfile` to your desired base image url:
 ARG ODOO_BASE_IMAGE=ghcr.io/adomi-io/odoo:19.0
 ```
 
-## Build arg
+## Build args
 
-You can override the build arg on a per-deployment basis. This is helpful if you wish to offer both a community and enterprise version of Odoo.
+You can override the build args on a per-deployment basis. This is helpful if you wish to offer both a community and enterprise version of Odoo.
 If you have a pre-configured image with Enterprise, you can override the base image in the `docker-compose.yml`
 
 ```yaml
@@ -123,6 +123,17 @@ services:
       args:
         ODOO_BASE_IMAGE: ghcr.io/your-company/odoo-enterprise:latest
 ```
+
+The following build arguments are available:
+
+| Argument | Description | Default |
+| --- | --- | --- |
+| `ODOO_BASE_IMAGE` | The base image to use for the build. | `ghcr.io/adomi-io/odoo:19.0` |
+| `ODOO_ENTERPRISE_REPOSITORY` | The Odoo Enterprise repository URL. | `https://github.com/odoo/enterprise` |
+| `ODOO_ENTERPRISE_BRANCH` | The branch of the Odoo Enterprise repository to clone. | `19.0` |
+| `SPECIFIC_DATE` | Clone the repository as it was on this date (e.g., `2024-01-01`). | `""` |
+| `SPECIFIC_HASH` | Clone the repository at a specific git hash. | `""` |
+| `GIT_AUTH_FORMAT` | The format for git authentication. | `'https://x-access-token:%s@github.com\n'` |
 
 # Making your own base image
 
