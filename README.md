@@ -8,7 +8,7 @@
   </a>
 </p>
 
-# Adomi - Odoo Boilerplate
+# Adomi - Odoo Enterprise Boilerplate
 
 Odoo is an open-source ERP platform that bundles common business apps (CRM, Sales, Inventory, Accounting, HR, Manufacturing, and more) into a single system.
 
