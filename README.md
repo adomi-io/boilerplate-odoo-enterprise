@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/new?template_name=odoo-enterprise-boilerplate&template_owner=adomi-io&visibility=private">
+  <a href="https://github.com/new?template_name=boilerplate-odoo-enterprise&template_owner=adomi-io&visibility=private">
     <img
       src="https://img.shields.io/badge/Use%20this%20template-2ea44f?style=for-the-badge&logo=github&logoColor=white"
       alt="Use this template"
@@ -19,7 +19,7 @@ This repository will build your team a private Odoo Enterprise Docker image.
 > Upstream image source code
 > 
 > - [adomi-io/odoo](https://github.com/adomi-io/odoo)
-> - [adomi-io/odoo-boilerplate](https://github.com/adomi-io/odoo-boilerplate)
+> - [adomi-io/boilerplate-odoo](https://github.com/adomi-io/boilerplate-odoo)
 
 # Getting started
 
@@ -50,12 +50,12 @@ This repository will build your team a private Odoo Enterprise Docker image.
 
 - Once the GitHub action completes, you should have a package in your repository's Packages tab.
 - Copy the image URL from the Packages tab
-- Use the [odoo-boilerplate](https://github.com/adomi/odoo-boilerplate) template
+- Use the [boilerplate-odoo](https://github.com/adomi/boilerplate-odoo) template
 - Change the `ODOO_BASE_IMAGE` arg to the image URL you copied, and the `latest` tag, eg: `ghcr.io/your-company/odoo-enterprise:latest`
 - Run `docker-compose up --build`
 
 > [!TIP]
-> If you use the `odoo-boilerplate`, and update the `ODOO_BASE_IMAGE`, then in the repository settings,
+> If you use the `boilerplate-odoo`, and update the `ODOO_BASE_IMAGE`, then in the repository settings,
 > mark it as a "Template repository," you will have an internal one-button way to create Odoo Enterprise repositories
 > for your team and clients.
 
