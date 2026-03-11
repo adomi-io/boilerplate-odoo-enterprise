@@ -75,7 +75,7 @@ jobs:
         run: ./tests/unit-tests.sh
         env:
           TESTS_IMAGE_TAG: ${{ env.DESTINATION_REGISTRY }}/${{ env.DESTINATION_IMAGE_NAME }}:${{ env.IMAGE_TAG }}
-          SKIP_BUILD: true
+          TESTS_SKIP_BUILD: true
 
       - name: Log into destination registry
         if: github.event_name != 'pull_request'
