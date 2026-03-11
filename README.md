@@ -14,12 +14,11 @@
 > **Want to lower your license costs?**
 > 
 > Try our [odoo-community-base](https://github.com/adomi-io/odoo-community-base) image
-> which includes some helpful OCA packages and additional addons to make Odoo Community edition 
+> which includes some helpful OCA packages and additional addons to make the Odoo Community edition 
 > more closely aligned with Odoo Enterprise, but without the license cost.
 > 
-> We recommend giving this a try before making new Odoo Enterprise commitments. 
-> 
-> Set the `ODOO_BASE_IMAGE` arg to:
+> We recommend giving this a try before making new Odoo Enterprise commitments. Take a copy of our [Odoo boilerplate](https://github.com/adomi-io/boilerplate-odoo), 
+> and set the `ODOO_BASE_IMAGE` arg to:
 > ```md
 > ghcr.io/adomi-io/odoo-community-base:latest
 > ```
