@@ -15,7 +15,7 @@ Odoo is an open-source ERP platform that bundles common business apps (CRM, Sale
 This repository will build your team a private Odoo Enterprise Docker image. 
 
 
-> [!TIP]
+> [!NOTE]
 > Upstream image source code
 > 
 > - [adomi-io/odoo](https://github.com/adomi-io/odoo)
