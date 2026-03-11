@@ -10,18 +10,6 @@
 
 # Adomi - Odoo Enterprise Boilerplate
 
-Odoo is an open-source ERP platform that bundles common business apps (CRM, Sales, Inventory, Accounting, HR, Manufacturing, and more) into a single system.
-
-This repository will build your team a private Odoo Enterprise Docker image. 
-
-
-> [!NOTE]
-> Upstream image source code
-> 
-> - [adomi-io/odoo](https://github.com/adomi-io/odoo)
-> - [adomi-io/boilerplate-odoo](https://github.com/adomi-io/boilerplate-odoo)
-
-
 > [!TIP]
 > **Want to lower your license costs?**
 > 
@@ -35,6 +23,18 @@ This repository will build your team a private Odoo Enterprise Docker image.
 > ```md
 > ghcr.io/adomi-io/odoo-community-base:latest
 > ```
+
+Odoo is an open-source ERP platform that bundles common business apps (CRM, Sales, Inventory, Accounting, HR, Manufacturing, and more) into a single system.
+
+This repository will build your team a private Odoo Enterprise Docker image. 
+
+
+> [!NOTE]
+> Upstream image source code
+> 
+> - [adomi-io/odoo](https://github.com/adomi-io/odoo)
+> - [adomi-io/boilerplate-odoo](https://github.com/adomi-io/boilerplate-odoo)
+
 
 # Getting started
 
