@@ -66,6 +66,15 @@ RUN --mount=type=secret,id=ODOO_ENTERPRISE_GITHUB_TOKEN,target=/run/secrets/ODOO
     fi; \
     rm -rf .git
 
+RUN git clone \
+        --depth 1 \
+        --branch "${ODOO_ENTERPRISE_BRANCH}"\
+        https://github.com/odoo/design-themes.git \
+        /tmp/design-themes \
+    && cp -a \
+        /tmp/design-themes/theme_* \
+        /tmp/enterprise/
+
 FROM ${ODOO_BASE_IMAGE} AS configuration_layer
 
 # Set user to root so we can install dependencies
@@ -73,7 +82,12 @@ USER root
 
 # Here, you can install python dependencies
 # For example:
-# RUN pip install  \
+RUN pip install  \
+    xmlsec \
+    lxml~=6.0 \
+    phonenumbers \
+    google-auth \
+    packaging
   #    python-slugify  \
   #    stripe  \
   #    mailerlite  \
