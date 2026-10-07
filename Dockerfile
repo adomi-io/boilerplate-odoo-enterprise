@@ -67,35 +67,43 @@ RUN --mount=type=secret,id=ODOO_ENTERPRISE_GITHUB_TOKEN,target=/run/secrets/ODOO
     rm -rf .git
 
 RUN git clone \
-        --depth 1 \
-        --branch "${ODOO_ENTERPRISE_BRANCH}"\
-        https://github.com/odoo/design-themes.git \
-        /tmp/design-themes \
+    --depth 1 \
+    --branch "${ODOO_ENTERPRISE_BRANCH}"\
+    https://github.com/odoo/design-themes.git \
+    /tmp/design-themes \
     && cp -a \
-        /tmp/design-themes/theme_* \
-        /tmp/enterprise/
+    /tmp/design-themes/theme_* \
+    /tmp/enterprise/
 
 FROM ${ODOO_BASE_IMAGE} AS configuration_layer
 
 # Set user to root so we can install dependencies
 USER root
 
+RUN --mount=type=cache,target=/var/cache/apt \
+    apt-get update; \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    libxml2 \
+    libxmlsec1t64 \
+    libxmlsec1t64-openssl; \
+    rm -rf /var/lib/apt/lists/*
+
 # Here, you can install python dependencies
 # For example:
-RUN pip install  \
-    xmlsec \
+RUN pip install \
+    xmlsec~=1.3 \
     lxml~=6.0 \
     phonenumbers \
     google-auth \
     packaging
-  #    python-slugify  \
-  #    stripe  \
-  #    mailerlite  \
-  #    mailerlite \
-  #    pika \
-  #    betterproto \
-  #    typeform \
-  #    meilisearch
+#    python-slugify  \
+#    stripe  \
+#    mailerlite  \
+#    mailerlite \
+#    pika \
+#    betterproto \
+#    typeform \
+#    meilisearch
 
 # Extend the layer with our python dependencies installed
 FROM configuration_layer
