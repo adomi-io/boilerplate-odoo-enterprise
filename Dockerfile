@@ -66,22 +66,50 @@ RUN --mount=type=secret,id=ODOO_ENTERPRISE_GITHUB_TOKEN,target=/run/secrets/ODOO
     fi; \
     rm -rf .git
 
+RUN git clone \
+    --depth 1 \
+    --branch "${ODOO_ENTERPRISE_BRANCH}"\
+    https://github.com/odoo/design-themes.git \
+    /tmp/design-themes \
+    && cp -a \
+    /tmp/design-themes/theme_* \
+    /tmp/enterprise/
+
 FROM ${ODOO_BASE_IMAGE} AS configuration_layer
 
 # Set user to root so we can install dependencies
 USER root
 
+# Fail the build if any command in a RUN step fails
+SHELL ["/bin/bash", "-xeo", "pipefail", "-c"]
+
+RUN --mount=type=cache,target=/var/cache/apt \
+    apt-get update; \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    libxml2 \
+    libxmlsec1t64 \
+    libxmlsec1t64-openssl; \
+    rm -rf /var/lib/apt/lists/*
+
 # Here, you can install python dependencies
 # For example:
-# RUN pip install  \
-  #    python-slugify  \
-  #    stripe  \
-  #    mailerlite  \
-  #    mailerlite \
-  #    pika \
-  #    betterproto \
-  #    typeform \
-  #    meilisearch
+RUN pip install \
+    xmlsec~=1.3 \
+    lxml~=6.0 \
+    phonenumbers \
+    google-auth \
+    packaging
+#    python-slugify  \
+#    stripe  \
+#    mailerlite  \
+#    mailerlite \
+#    pika \
+#    betterproto \
+#    typeform \
+#    meilisearch
+
+# Verify xmlsec and lxml were built against the same libxml2
+RUN python -c "import lxml.etree, xmlsec"
 
 # Extend the layer with our python dependencies installed
 FROM configuration_layer
