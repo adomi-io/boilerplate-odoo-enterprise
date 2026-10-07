@@ -80,6 +80,9 @@ FROM ${ODOO_BASE_IMAGE} AS configuration_layer
 # Set user to root so we can install dependencies
 USER root
 
+# Fail the build if any command in a RUN step fails
+SHELL ["/bin/bash", "-xeo", "pipefail", "-c"]
+
 RUN --mount=type=cache,target=/var/cache/apt \
     apt-get update; \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
@@ -104,6 +107,9 @@ RUN pip install \
 #    betterproto \
 #    typeform \
 #    meilisearch
+
+# Verify xmlsec and lxml were built against the same libxml2
+RUN python -c "import lxml.etree, xmlsec"
 
 # Extend the layer with our python dependencies installed
 FROM configuration_layer
